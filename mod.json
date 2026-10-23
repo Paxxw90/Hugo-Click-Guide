@@ -1,0 +1,89 @@
+{
+  "geode": "5.11.2",
+  "gd": {
+    "win": "2.2081"
+  },
+  "id": "hugo.click-guide",
+  "name": "Hugo Click Guide",
+  "version": "v1.0.0",
+  "description": "Guia visual de clics: franjas, carril, puntuacion y grabacion. Requiere una referencia del nivel.",
+  "settings": {
+    "enabled": {
+      "name": "Guia activada",
+      "type": "bool",
+      "default": true,
+      "description": "Activa las franjas, el carril y la puntuacion. Tambien F6."
+    },
+    "show-bars": {
+      "name": "Franjas sobre el nivel",
+      "type": "bool",
+      "default": true,
+      "description": "Barras verdes: pulsar al inicio y soltar al final. Proyeccion temporal a la velocidad actual."
+    },
+    "show-lane": {
+      "name": "Carril de ritmo",
+      "type": "bool",
+      "default": true,
+      "description": "Las notas bajan hacia la linea amarilla. Dos carriles cuando hay dual."
+    },
+    "offset-ms": {
+      "name": "Desfase de la macro (ms)",
+      "type": "float",
+      "default": 0.0,
+      "description": "Positivo: notas mas tarde. Negativo: antes. No cambia tus entradas.",
+      "min": -600000.0,
+      "max": 600000.0
+    },
+    "look-ahead": {
+      "name": "Anticipacion de franjas (s)",
+      "type": "float",
+      "default": 2.0,
+      "description": "Tiempo visible por delante del jugador.",
+      "min": 0.25,
+      "max": 8.0
+    },
+    "lane-window": {
+      "name": "Anticipacion del carril (s)",
+      "type": "float",
+      "default": 1.2,
+      "description": "Menos tiempo da un carril visualmente mas rapido.",
+      "min": 0.25,
+      "max": 5.0
+    },
+    "opacity": {
+      "name": "Opacidad de franjas (%)",
+      "type": "float",
+      "default": 20.0,
+      "description": "20 deja ver bien el nivel debajo.",
+      "min": 0.0,
+      "max": 90.0
+    },
+    "max-notes": {
+      "name": "Maximo de notas dibujadas",
+      "type": "int",
+      "default": 32,
+      "description": "Limita trabajo de dibujo por actualizacion; se comparte entre jugadores.",
+      "min": 4,
+      "max": 80
+    },
+    "perfect-ms": {
+      "name": "Margen PERFECT (ms)",
+      "type": "float",
+      "default": 8.0,
+      "description": "Tolerancia de puntuacion. No es una ventana segura de colision.",
+      "min": 1.0,
+      "max": 100.0
+    },
+    "ok-ms": {
+      "name": "Margen OK (ms)",
+      "type": "float",
+      "default": 33.0,
+      "description": "Fuera de este margen el clic es EXTRA y la nota pendiente puede ser MISS.",
+      "min": 2.0,
+      "max": 200.0
+    }
+  },
+  "developers": [
+    "Hugo"
+  ]
+}
