@@ -1,0 +1,37 @@
+name: Compilar mod
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - Hugo-Click-Guide-source.zip
+      - .github/workflows/build.yml
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extraer proyecto
+        shell: pwsh
+        run: |
+          Expand-Archive -LiteralPath "Hugo-Click-Guide-source.zip" -DestinationPath "compilacion"
+
+      - name: Compilar con Geode
+        uses: geode-sdk/build-geode-mod@main
+        id: build
+        with:
+          sdk: v5.11.2
+          target: Win64
+          path: compilacion/Hugo-Click-Guide
+
+      - name: Guardar mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hugo-Click-Guide-Windows
+          path: ${{ steps.build.outputs.build-output }}
+          if-no-files-found: error
